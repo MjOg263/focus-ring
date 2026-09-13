@@ -1,0 +1,256 @@
+:root {
+  --bg: #0f1220;
+  --panel: #171b2e;
+  --accent: #7c9dff;
+  --accent-soft: rgba(124, 157, 255, 0.15);
+  --break-accent: #6be3c4;
+  --text: #eef0fb;
+  --text-dim: #9aa0c3;
+  --track: #262b45;
+  --danger: #ff8686;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #1a1f38, var(--bg));
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  padding: 24px;
+}
+
+.app {
+  width: 100%;
+  max-width: 420px;
+  background: var(--panel);
+  border-radius: 24px;
+  padding: 32px 28px 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.subtitle.break {
+  color: var(--break-accent);
+}
+
+.ring-wrap {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 24px auto;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-track {
+  fill: none;
+  stroke: var(--track);
+  stroke-width: 14;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-dasharray: 848.2;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s;
+}
+
+.ring-progress.break {
+  stroke: var(--break-accent);
+}
+
+.ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.time {
+  font-size: 3rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.sessions-today {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.primary {
+  background: var(--accent);
+  color: #0f1220;
+  min-width: 110px;
+}
+
+.secondary {
+  background: var(--track);
+  color: var(--text);
+}
+
+.link {
+  background: none;
+  color: var(--text-dim);
+  padding: 2px 6px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
+.settings {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 18px;
+}
+
+.settings label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  gap: 4px;
+  align-items: center;
+}
+
+.settings label.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.settings input[type="number"] {
+  width: 56px;
+  background: var(--track);
+  border: none;
+  border-radius: 8px;
+  color: var(--text);
+  padding: 6px 8px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.settings input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.history h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 140px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.history-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+}
+
+.history-list li .kind-focus {
+  color: var(--accent);
+}
+
+.history-list li .kind-break {
+  color: var(--break-accent);
+}
+
+.history-list .empty {
+  color: var(--text-dim);
+  text-align: center;
+  padding: 14px;
+  background: none;
+}
+
+.history-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: var(--track);
+  border-radius: 3px;
+}
