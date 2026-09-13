@@ -66,7 +66,7 @@ function tick() {
 function startTimer() {
   if (running) return;
   running = true;
-  if (Notification && Notification.permission === "default") {
+  if (window.Notification && Notification.permission === "default") {
     Notification.requestPermission();
   }
   tickHandle = setInterval(tick, 1000);
